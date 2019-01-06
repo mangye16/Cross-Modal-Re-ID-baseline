@@ -3,10 +3,10 @@ Pytorch Code for Cross-Modality Person Re-Identification (Visible Thermal Re-ID)
 
 We adopt the two-stream network structure introduced in [3]. ResNet50 is adopted as the backbone. The softmax loss is adopted as the baseline. 
 
-|Datasets | Rank@1  | mAP |
-| --------   | -----  |  ----  |
-|#RegDB      | ~ 22.4% | ~ 22.8% |
-|#SYSU-MM01  | ~ 24.5% | ~ 25.6% |
+|Datasets    | Pretrained| Rank@1  | mAP | Model|
+| --------   | -----    | -----  |  -----  | ----- |
+|#RegDB      | ImageNet | ~ 22.4% | ~ 22.8% | ----- |
+|#SYSU-MM01  | ImageNet | ~ 24.5%  | ~ 27.2% | [GoogleDrive](https://drive.google.com/open?id=1eLGMK3Hg413iW3IBKrB43kMWLvikbZGH)|
 
 *Both of these two datasets may have some fluctuation due to random spliting. The results might be better by finetuning the hyper-parameters. 
 
