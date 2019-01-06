@@ -21,7 +21,7 @@ with open(file_path_val, 'r') as file:
     ids = [int(y) for y in ids[0].split(',')]
     id_val = ["%04d" % x for x in ids]
     
-# combine train and test split   
+# combine train and val split   
 id_train.extend(id_val) 
 
 files_rgb = []
