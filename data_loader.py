@@ -18,7 +18,7 @@ class SYSUData(data.Dataset):
         train_thermal_image = np.load(data_dir + 'train_ir_resized_img.npy')
         self.train_thermal_label = np.load(data_dir + 'train_ir_resized_label.npy')
         
-        # BGR to RGB
+        # RGB format
         self.train_color_image   = train_color_image
         self.train_thermal_image = train_thermal_image
         self.transform = transform
@@ -50,7 +50,6 @@ class RegDBData(data.Dataset):
         
         train_color_image = []
         for i in range(len(color_img_file)):
-   
             img = Image.open(data_dir+ color_img_file[i])
             img = img.resize((144, 288), Image.ANTIALIAS)
             pix_array = np.array(img)
@@ -65,11 +64,11 @@ class RegDBData(data.Dataset):
             train_thermal_image.append(pix_array)
         train_thermal_image = np.array(train_thermal_image)
         
-        # BGR to RGB
+        # RGB format
         self.train_color_image = train_color_image  
         self.train_color_label = train_color_label
         
-        # BGR to RGB
+        # RGB format
         self.train_thermal_image = train_thermal_image
         self.train_thermal_label = train_thermal_label
         
@@ -92,7 +91,6 @@ class RegDBData(data.Dataset):
         
 class TestData(data.Dataset):
     def __init__(self, test_img_file, test_label, transform=None, img_size = (224,224)):
-
         test_image = []
         for i in range(len(test_img_file)):
             img = Image.open(test_img_file[i])
