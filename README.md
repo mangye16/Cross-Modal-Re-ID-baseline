@@ -38,9 +38,13 @@ python train.py --dataset sysu --lr 0.01 --drop 0.0 --trial 1 --gpu 1
 
   -  `--gpu`: which gpu to run.
 
-More parameters can be found in the script. You may need mannully define the data path first.
+You may need mannully define the data path first.
 
-The training log will be saved in `log/" dataset_name"+ log`. Model will be saved in `save_model/`
+**Parameters**: More parameters can be found in the script.
+
+**Sampling Strategy**: N (= bacth size) person identities are randomly sampled at each step, then randomly select one visible and one thermal image. Details can be found in Line 302-207 in `train.py`.
+
+**Training Log**: The training log will be saved in `log/" dataset_name"+ log`. Model will be saved in `save_model/`.
 
 ### 3. Testing.
 
@@ -56,7 +60,6 @@ python test.py --mode all --resume 'model_path' --gpu 1
   - `--gpu`:  which gpu to run.
 
 ###  4. Tips.
- - Dropout ratio is very important for the small RegDB dataset (`--drop 0.5`).
  
  - Softmax loss is not good on RegDB dataset, triplet loss performs much better on this dataset.
  
