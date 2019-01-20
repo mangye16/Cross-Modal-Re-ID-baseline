@@ -48,12 +48,15 @@ You may need mannully define the data path first.
 
 ### 3. Testing.
 
-Test a model on SYSU-MM01 dataset by 
+Test a model on SYSU-MM01 or RegDB dataset by 
   ```bash
-python test.py --mode all --resume 'model_path' --gpu 1
+python test.py --mode all --resume 'model_path' --gpu 1 --dataset sysu
 ```
-
-  - `--mode`: "all" or "indoor" all search or indoor search.
+  - `--dataset`: which dataset "sysu" or "regdb".
+  
+  - `--mode`: "all" or "indoor" all search or indoor search (only for sysu dataset).
+  
+  - `--trial`: testing trial (only for RegDB dataset).
   
   - `--resume`: the saved model path.
   
