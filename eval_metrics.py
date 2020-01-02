@@ -1,19 +1,11 @@
 from __future__ import print_function, absolute_import
-import os
-import glob
-import re
-import sys
-import os.path as osp
 import numpy as np
-
-import random
-from time import time
-
 """Cross-Modality ReID"""
+import pdb
 
 def eval_sysu(distmat, q_pids, g_pids, q_camids, g_camids, max_rank = 20):
     """Evaluation with sysu metric
-    Key: for each query identity, its gallery images from the same camera view are discarded.
+    Key: for each query identity, its gallery images from the same camera view are discarded. "Following the original setting in ite dataset"
     """
     num_q, num_g = distmat.shape
     if num_g < max_rank:
@@ -27,6 +19,7 @@ def eval_sysu(distmat, q_pids, g_pids, q_camids, g_camids, max_rank = 20):
     new_all_cmc = []
     all_cmc = []
     all_AP = []
+    all_INP = []
     num_valid_q = 0. # number of valid query
     for q_idx in range(num_q):
         # get query pid and camid
@@ -55,6 +48,14 @@ def eval_sysu(distmat, q_pids, g_pids, q_camids, g_camids, max_rank = 20):
             continue
 
         cmc = orig_cmc.cumsum()
+
+        # compute mINP
+        # refernece Deep Learning for Person Re-identification: A Survey and Outlook
+        pos_idx = np.where(orig_cmc == 1)
+        pos_max_idx = np.max(pos_idx)
+        inp = cmc[pos_max_idx]/ (pos_max_idx + 1.0)
+        all_INP.append(inp)
+
         cmc[cmc > 1] = 1
 
         all_cmc.append(cmc[:max_rank])
@@ -72,13 +73,13 @@ def eval_sysu(distmat, q_pids, g_pids, q_camids, g_camids, max_rank = 20):
     assert num_valid_q > 0, "Error: all query identities do not appear in gallery"
     
     all_cmc = np.asarray(all_cmc).astype(np.float32)
-    all_cmc = all_cmc.sum(0) / num_valid_q
+    all_cmc = all_cmc.sum(0) / num_valid_q   # standard CMC
     
     new_all_cmc = np.asarray(new_all_cmc).astype(np.float32)
     new_all_cmc = new_all_cmc.sum(0) / num_valid_q
     mAP = np.mean(all_AP)
-
-    return new_all_cmc, mAP
+    mINP = np.mean(all_INP)
+    return new_all_cmc, mAP, mINP
     
     
     
@@ -93,6 +94,7 @@ def eval_regdb(distmat, q_pids, g_pids, max_rank = 20):
     # compute cmc curve for each query
     all_cmc = []
     all_AP = []
+    all_INP = []
     num_valid_q = 0. # number of valid query
     
     # only two cameras
@@ -116,6 +118,14 @@ def eval_regdb(distmat, q_pids, g_pids, max_rank = 20):
             continue
 
         cmc = raw_cmc.cumsum()
+
+        # compute mINP
+        # refernece Deep Learning for Person Re-identification: A Survey and Outlook
+        pos_idx = np.where(raw_cmc == 1)
+        pos_max_idx = np.max(pos_idx)
+        inp = cmc[pos_max_idx]/ (pos_max_idx + 1.0)
+        all_INP.append(inp)
+
         cmc[cmc > 1] = 1
 
         all_cmc.append(cmc[:max_rank])
@@ -135,5 +145,5 @@ def eval_regdb(distmat, q_pids, g_pids, max_rank = 20):
     all_cmc = np.asarray(all_cmc).astype(np.float32)
     all_cmc = all_cmc.sum(0) / num_valid_q
     mAP = np.mean(all_AP)
-
-    return all_cmc, mAP
+    mINP = np.mean(all_INP)
+    return all_cmc, mAP, mINP

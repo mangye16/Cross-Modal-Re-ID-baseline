@@ -1,6 +1,5 @@
 from __future__ import print_function, absolute_import
 import os
-import sys
 import numpy as np
 import random
 
@@ -37,7 +36,7 @@ def process_query_sysu(data_path, mode = 'all', relabel=False):
 
 def process_gallery_sysu(data_path, mode = 'all', trial = 0, relabel=False):
     
-    # random.seed(trial)
+    random.seed(trial)
     
     if mode== 'all':
         rgb_cameras = ['cam1','cam2','cam4','cam5']
