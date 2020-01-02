@@ -6,7 +6,7 @@ We adopt the two-stream network structure introduced in [3]. ResNet50 is adopted
 |Datasets    | Pretrained| Rank@1  | mAP |  mINP |  Model|
 | --------   | -----    | -----  |  -----  | ----- |------|
 |#RegDB      | ImageNet | ~ 70.05% | ~ 66.37%|  ~50.19% |----- |
-|#SYSU-MM01  | ImageNet | ~ 47.50%  | ~ 47.65% | ~35.30% | [GoogleDrive](https://drive.google.com/open?id=1eLGMK3Hg413iW3IBKrB43kMWLvikbZGH)|
+|#SYSU-MM01  | ImageNet | ~ 47.50%  | ~ 47.65% | ~35.30% | [GoogleDrive](https://drive.google.com/open?id=181K9PQGnej0K5xNX9DRBDPAf3K9JosYk)|
 
 *Both of these two datasets may have some fluctuation due to random spliting. The results might be better by finetuning the hyper-parameters. 
 
