@@ -25,24 +25,22 @@ We adopt the two-stream network structure introduced in [3]. ResNet50 is adopted
 ### 2. Training.
   Train a model by
   ```bash
-python train.py --dataset sysu --lr 0.01 --drop 0.0 --trial 1 --gpu 1
+python train.py --dataset sysu --lr 0.1 --method agw --gpu 1
 ```
 
   - `--dataset`: which dataset "sysu" or "regdb".
 
   - `--lr`: initial learning rate.
   
-  -  `--drop`: dropout ratio.
+  -  `--method`: method to run or baseline.
   
-  -  `--trial`: training trial (only for RegDB dataset).
-
-  -  `--gpu`: which gpu to run.
+  - `--gpu`:  which gpu to run.
 
 You may need mannully define the data path first.
 
 **Parameters**: More parameters can be found in the script.
 
-**Sampling Strategy**: N (= bacth size) person identities are randomly sampled at each step, then randomly select one visible and one thermal image. Details can be found in Line 302-307 in `train.py`.
+**Sampling Strategy**: N (= bacth size) person identities are randomly sampled at each step, then randomly select four visible and four thermal image. Details can be found in Line 302-307 in `train.py`.
 
 **Training Log**: The training log will be saved in `log/" dataset_name"+ log`. Model will be saved in `save_model/`.
 
@@ -62,10 +60,18 @@ python test.py --mode all --resume 'model_path' --gpu 1 --dataset sysu
   
   - `--gpu`:  which gpu to run.
 
-###  4. Tips.
- 
- - Softmax loss is not good on RegDB dataset, triplet loss performs much better on this dataset.
- 
+### 4. Citation
+
+Please kindly cite this paper in your publications if it helps your research:
+```
+@article{arxiv20reidsurvey,
+  title={Deep Learning for Person Re-identification: A Survey and Outlook},
+  author={Ye, Mang and Shen, Jianbing and Lin, Gaojie and Xiang, Tao and Shao, Ling and Hoi, Steven C. H.},
+  journal={arXiv preprint arXiv:2001.04193},
+  year={2020},
+}
+```
+
 ###  5. References.
 [1] D. T. Nguyen, H. G. Hong, K. W. Kim, and K. R. Park. Person recognition system based on a combination of body images from visible
 light and thermal cameras. Sensors, 17(3):605, 2017.
