@@ -148,8 +148,8 @@ if dataset == 'sysu':
 
     print('==> Resuming from checkpoint..')
     if len(args.resume) > 0:
-        # model_path = checkpoint_path + args.resume
-        model_path = checkpoint_path + 'sysu_awg_p4_n8_lr_0.1_seed_0_best.t'
+        model_path = checkpoint_path + args.resume
+        # model_path = checkpoint_path + 'sysu_awg_p4_n8_lr_0.1_seed_0_best.t'
         if os.path.isfile(model_path):
             print('==> loading checkpoint {}'.format(args.resume))
             checkpoint = torch.load(model_path)
@@ -221,7 +221,8 @@ elif dataset == 'regdb':
 
     for trial in range(10):
         test_trial = trial +1
-        model_path = checkpoint_path + 'regdb_awg_p4_n8_lr_0.1_seed_0_trial_{}_best.t'.format(test_trial)
+        model_path = checkpoint_path +  args.resume
+        #model_path = checkpoint_path + 'regdb_awg_p4_n8_lr_0.1_seed_0_trial_{}_best.t'.format(test_trial)
         if os.path.isfile(model_path):
             print('==> loading checkpoint {}'.format(args.resume))
             checkpoint = torch.load(model_path)
