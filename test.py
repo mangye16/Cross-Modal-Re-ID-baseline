@@ -210,10 +210,10 @@ if dataset == 'sysu':
 
         print('Test Trial: {}'.format(trial))
         print(
-            'POOL:   Rank-1: {:.2%} | Rank-5: {:.2%} | Rank-10: {:.2%}| Rank-20: {:.2%}| mAP: {:.2%}| mINP: {:.2%}'.format(
+            'FC:   Rank-1: {:.2%} | Rank-5: {:.2%} | Rank-10: {:.2%}| Rank-20: {:.2%}| mAP: {:.2%}| mINP: {:.2%}'.format(
                 cmc[0], cmc[4], cmc[9], cmc[19], mAP, mINP))
         print(
-            'FC:   Rank-1: {:.2%} | Rank-5: {:.2%} | Rank-10: {:.2%}| Rank-20: {:.2%}| mAP: {:.2%}| mINP: {:.2%}'.format(
+            'POOL: Rank-1: {:.2%} | Rank-5: {:.2%} | Rank-10: {:.2%}| Rank-20: {:.2%}| mAP: {:.2%}| mINP: {:.2%}'.format(
                 cmc_pool[0], cmc_pool[4], cmc_pool[9], cmc_pool[19], mAP_pool, mINP_pool))
 
 
@@ -221,8 +221,8 @@ elif dataset == 'regdb':
 
     for trial in range(10):
         test_trial = trial +1
-        model_path = checkpoint_path +  args.resume
-        #model_path = checkpoint_path + 'regdb_awg_p4_n8_lr_0.1_seed_0_trial_{}_best.t'.format(test_trial)
+        #model_path = checkpoint_path +  args.resume
+        model_path = checkpoint_path + 'regdb_awg_p4_n8_lr_0.1_seed_0_trial_{}_best.t'.format(test_trial)
         if os.path.isfile(model_path):
             print('==> loading checkpoint {}'.format(args.resume))
             checkpoint = torch.load(model_path)
