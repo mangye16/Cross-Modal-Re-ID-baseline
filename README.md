@@ -1,7 +1,7 @@
 # Cross-Modal-Re-ID-baseline (AGW) 
-Pytorch Code for Cross-Modality Person Re-Identification (Visible Thermal Re-ID) on RegDB dataset [1] and SYSU-MM01 dataset [2]. 
+Pytorch Code of AGW method [1] for Cross-Modality Person Re-Identification (Visible Thermal Re-ID) on RegDB dataset [3] and SYSU-MM01 dataset [4]. 
 
-We adopt the two-stream network structure introduced in [3]. ResNet50 is adopted as the backbone. The softmax loss is adopted as the baseline. 
+We adopt the two-stream network structure introduced in [2]. ResNet50 is adopted as the backbone. The softmax loss is adopted as the baseline. 
 
 |Datasets    | Pretrained| Rank@1  | mAP |  mINP |  Model|
 | --------   | -----    | -----  |  -----  | ----- |------|
@@ -12,13 +12,13 @@ We adopt the two-stream network structure introduced in [3]. ResNet50 is adopted
 
 ### 1. Prepare the datasets.
 
-- (1) RegDB Dataset [1]: The RegDB dataset can be downloaded from this [website](http://dm.dongguk.edu/link.html) by submitting a copyright form.
+- (1) RegDB Dataset [3]: The RegDB dataset can be downloaded from this [website](http://dm.dongguk.edu/link.html) by submitting a copyright form.
 
     - (Named: "Dongguk Body-based Person Recognition Database (DBPerson-Recog-DB1)" on their website). 
 
     - A private download link can be requested via sending me an email (mangye16@gmail.com). 
   
-- (2) SYSU-MM01 Dataset [2]: The SYSU-MM01 dataset can be downloaded from this [website](http://isee.sysu.edu.cn/project/RGBIRReID.htm).
+- (2) SYSU-MM01 Dataset [4]: The SYSU-MM01 dataset can be downloaded from this [website](http://isee.sysu.edu.cn/project/RGBIRReID.htm).
 
    - run `python pre_process_sysu.py` to pepare the dataset, the training data will be stored in ".npy" format.
 
