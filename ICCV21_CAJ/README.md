@@ -14,31 +14,31 @@ We adopt the two-stream network structure introduced in [2,3].
 
 - (1) RegDB Dataset [3]: The RegDB dataset can be downloaded from this [website](http://dm.dongguk.edu/link.html) by submitting a copyright form.
 
-    - (Named: "Dongguk Body-based Person Recognition Database (DBPerson-Recog-DB1)" on their website). 
+- (Named: "Dongguk Body-based Person Recognition Database (DBPerson-Recog-DB1)" on their website). 
 
-    - A private download link can be requested via sending me an email (mangye16@gmail.com). 
-  
+- A private download link can be requested via sending me an email (mangye16@gmail.com). 
+
 - (2) SYSU-MM01 Dataset [4]: The SYSU-MM01 dataset can be downloaded from this [website](http://isee.sysu.edu.cn/project/RGBIRReID.htm).
 
-   - run `python pre_process_sysu.py` to pepare the dataset, the training data will be stored in ".npy" format.
+- run `python pre_process_sysu.py` to pepare the dataset, the training data will be stored in ".npy" format.
 
 ### 2. Joint Training (Section 4.2).
-  Train a model by
-  ```bash
+Train a model by
+```bash
 python train_ext.py --dataset sysu --lr 0.1 --method adp --augc 1 --rande 0.5 --alpha 1 --square 1 --gamma 1 --gpu 1
 ```
 
-  - `--dataset`: which dataset "sysu" or "regdb".
+- `--dataset`: which dataset "sysu" or "regdb".
 
-  - `--lr`: initial learning rate.
-  
-  -  `--method`: method to run Enhanced Squared Difference or Baseline.
-  
-  -  `--augc`:  Channel augmentation or not.
-  
-  -  `--rande`:  random erasing with probability.
-  
-  - `--gpu`:  which gpu to run.
+- `--lr`: initial learning rate.
+
+-  `--method`: method to run Enhanced Squared Difference or Baseline.
+
+-  `--augc`:  Channel augmentation or not.
+
+-  `--rande`:  random erasing with probability.
+
+- `--gpu`:  which gpu to run.
 
 You may need mannully define the data path first.
 
@@ -51,29 +51,29 @@ You may need mannully define the data path first.
 ### 3. Testing.
 
 Test a model on SYSU-MM01 or RegDB dataset by using testing augmentation with HorizontalFlip
-  ```bash
+```bash
 python testa.py --mode all --resume 'model_path' --gpu 1 --dataset sysu
 ```
-  - `--dataset`: which dataset "sysu" or "regdb".
-  
-  - `--mode`: "all" or "indoor" all search or indoor search (only for sysu dataset).
-  
-  - `--trial`: testing trial (only for RegDB dataset).
-  
-  - `--resume`: the saved model path.
-  
-  - `--gpu`:  which gpu to run.
+- `--dataset`: which dataset "sysu" or "regdb".
+
+- `--mode`: "all" or "indoor" all search or indoor search (only for sysu dataset).
+
+- `--trial`: testing trial (only for RegDB dataset).
+
+- `--resume`: the saved model path.
+
+- `--gpu`:  which gpu to run.
 
 ### 4. Citation
 
 Please kindly cite this paper in your publications if it helps your research:
 ```
 @inproceedings{iccv21caj,
-    author    = {Ye, Mang and Ruan, Weijian and Du, Bo and Shou, Mike Zheng},
-    title     = {Channel Augmented Joint Learning for Visible-Infrared Recognition},
-    booktitle = {IEEE/CVF International Conference on Computer Vision},
-    year      = {2021},
-    pages     = {13567-13576}
+author    = {Ye, Mang and Ruan, Weijian and Du, Bo and Shou, Mike Zheng},
+title     = {Channel Augmented Joint Learning for Visible-Infrared Recognition},
+booktitle = {IEEE/CVF International Conference on Computer Vision},
+year      = {2021},
+pages     = {13567-13576}
 }
 ```
 
