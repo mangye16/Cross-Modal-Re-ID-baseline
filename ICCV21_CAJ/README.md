@@ -6,7 +6,7 @@ We adopt the two-stream network structure introduced in [2,3].
 |Datasets    | Pretrained| Rank@1  | mAP |  mINP |  Model|
 | --------   | -----    | -----  |  -----  | ----- |------|
 |#RegDB      | ImageNet | ~ 85.03% | ~ 79.14%|  ~65.33% |----- |
-|#SYSU-MM01  | ImageNet | ~ 69.88%  | ~ 66.89% | ~53.61% | [GoogleDrive]()|
+|#SYSU-MM01  | ImageNet | ~ 69.88%  | ~ 66.89% | ~53.61% | [GoogleDrive](https://drive.google.com/file/d/1vIKkB61frqA-zG0RiL282heqthvwkKdO/view?usp=sharing)|
 
 *Both of these two datasets may have some fluctuation due to random spliting. The results might be better by finetuning the hyper-parameters. 
 
